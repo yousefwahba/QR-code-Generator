@@ -23,8 +23,6 @@ export default function Home() {
     canvas.height = svgSize.height;
     const ctx = canvas.getContext('2d');
     const img = new Image();
-    img.width = svgSize.width; //need to handle that
-    img.height = svgSize.height;
     img.onload = () => {
       ctx.drawImage(img, 0, 0);
       const dataURL = canvas.toDataURL('image/png');
@@ -52,11 +50,14 @@ export default function Home() {
             placeholder="Enter URL here"
             className="border border-gray-300 px-4 py-2 rounded-lg w-full mr-4"
           />
-          <QRCode value={url} size={64} />
+        </div>
+
+        <div className="flex items-center justify-center mt-6">
+          <QRCode value={url} size={256} />
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="text-sm text-gray-500 hover:text-gray-700 focus:outline-none"
+            className="text-sm text-gray-500 hover:text-gray-700 focus:outline-none mt-5 text-center mx-auto"
             onClick={handleDownloadClick}
           >
             Download
